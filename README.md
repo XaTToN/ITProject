@@ -14,4 +14,5 @@ This is a small minimalistic Sidescroller with the goal to reach the end of the 
 1. Add CMake-Build-System
 2. Remove hard-coded content and replace it dynamically
 3. Add Engine to increase both efficency and usability
+4. Improve perfomance
 

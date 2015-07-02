@@ -1,7 +1,7 @@
 #ifndef __MAP_MGR_H__
 #define __MAP_MGR_H__
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
 #include <map>

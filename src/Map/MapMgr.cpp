@@ -1,5 +1,5 @@
-#include "MapMgr.h"
-#include "Shared.h"
+#include <DumpJump/Map/MapMgr.h>
+#include <DumpJump/Shared.h>
 
 #include <fstream>
 #include <sstream>
@@ -14,7 +14,7 @@ MapMgr::MapMgr(const std::string& mapfile)
 	tileset.insert(std::pair<int, sf::Texture>(1, txt1));
 
 	//parse given map-file
-	std::ifstream infile(mapfile);
+	std::ifstream infile(mapfile.c_str());
 
 	std::string current_line;
 
@@ -41,18 +41,27 @@ MapMgr::MapMgr(const std::string& mapfile)
 		coord_y++;
 	}
 }
-
+ 
 void MapMgr::SelectTiles(const float& offset)
 {
 	selected_tiles.clear();
 
-	for (std::vector<Tile>::iterator itr = tiles.begin(); itr != tiles.end(); ++itr)
+	for (std::vector<Tile>::iterator itr = tiles.begin(); itr != tiles.end();)
 	{
-		float pos_x = itr->sprite.getPosition().x;
-		float pos_y = itr->sprite.getPosition().y;
+		float pos_x = itr->TransformCoordinates().x;
 
-		if (pos_x - offset > 0 && pos_x - offset < 1210)
+		if (pos_x - offset < -100)
+		{
+			itr = tiles.erase(itr);
+			continue;
+		}
+
+		if (pos_x - offset > -100 && pos_x - offset < 1400)
+		{
 			selected_tiles.push_back(*itr);
+		}
+
+		++itr;
 	}
 }
 

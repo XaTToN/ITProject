@@ -144,16 +144,16 @@ void Game::handlePlayerInput(const int& code, bool pressed)
 {
 	switch (code)
 	{
-		case GamepadButtons::BTN_A:
-		case GamepadButtons::BTN_B:
-		case GamepadButtons::BTN_X:
-		case GamepadButtons::BTN_Y:
 		case sf::Keyboard::S:
 			ambient.setVolume(0);
 			break;
 		case sf::Keyboard::F:
 			ambient.setVolume(100);
 			break;
+		case GamepadButtons::BTN_A:
+		case GamepadButtons::BTN_B:
+		case GamepadButtons::BTN_X:
+		case GamepadButtons::BTN_Y:
 		case sf::Keyboard::Space:
 			if (pressed)
 			{

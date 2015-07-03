@@ -67,9 +67,9 @@ void Game::update(sf::Time delta_time)
 
 	sf::Vector2f movement(0.f, 0.f);
 
-	if (moving_left)
+	if (moving_left && player.getPosition().x > 0)
 		movement.x -= PlayerSpeed;
-	if (moving_right)
+	if (moving_right && player.getPosition().x < 1200)
 		movement.x += PlayerSpeed;
 
 	player.move(movement * delta_time.asSeconds());
